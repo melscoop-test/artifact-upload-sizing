@@ -1,0 +1,15 @@
+name: Upload Artifact
+on: workflow_dispatch
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          mkdir data
+          cd data
+          wget https://download.oracle.com/otn_software/linux/instantclient/1914000/instantclient-basic-linux.x64-19.14.0.0.0dbru.zip
+      - uses: actions/upload-artifact@v2
+        with:
+          name: data
+          path: data
